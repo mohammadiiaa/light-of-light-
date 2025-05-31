@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+/* Custom styles for educational content */
+.education-card {
+  @apply bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:transform hover:scale-105;
+}
+
+.education-title {
+  @apply text-xl font-semibold mb-4 text-gray-800;
+}
+
+.education-description {
+  @apply text-gray-800 mb-4;
+}
+
+/* Custom styles for live streaming */
+.stream-container {
+  @apply relative w-full bg-black rounded-lg overflow-hidden;
+  aspect-ratio: 16/9;
+}
+
+.chat-container {
+  @apply h-96 border rounded-lg p-4 overflow-y-auto bg-white;
+}
+
+/* Custom styles for admin dashboard */
+.admin-card {
+  @apply bg-white p-6 rounded-lg shadow-md mb-6;
+}
+
+.admin-title {
+  @apply text-2xl font-semibold mb-4 text-gray-800;
+}
+
+/* Custom styles for natural signs */
+.natural-sign-card {
+  @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.significance-box {
+  @apply bg-blue-50 p-4 rounded mb-4 text-gray-900;
+}
+
+.scientific-box {
+  @apply bg-green-50 p-4 rounded text-gray-900;
+}
+
+/* Custom styles for navigation */
+.nav-link {
+  @apply text-gray-800 hover:text-gray-900 transition-colors duration-200;
+}
+
+/* Custom styles for buttons */
+.primary-button {
+  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200;
+}
+
+.secondary-button {
+  @apply bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-200;
+}
+
+/* Custom styles for forms */
+.form-input {
+  @apply w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900;
+}
+
+.form-label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+/* Custom styles for typography */
+.heading-1 {
+  @apply text-3xl font-bold mb-8;
+}
+
+.heading-2 {
+  @apply text-2xl font-semibold mb-6;
+}
+
+.heading-3 {
+  @apply text-xl font-semibold mb-4;
+}
+
+/* Custom styles for grid layouts */
+.grid-container {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Custom styles for responsive containers */
+.content-container {
+  @apply container mx-auto px-4 py-8;
+}
+
+/* Custom styles for cards */
+.info-card {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+
+/* Custom styles for sections */
+.section {
+  @apply mb-12;
+}
+
+/* Custom styles for text content */
+.text-content {
+  @apply text-gray-600 leading-relaxed;
+}
+
+/* Custom styles for highlights */
+.highlight {
+  @apply bg-yellow-50 p-4 rounded border-l-4 border-yellow-500;
+}
+
+/* Custom styles for quotes */
+.quote {
+  @apply italic text-gray-700 border-l-4 border-gray-300 pl-4 my-4;
+}
+
+/* Custom styles for lists */
+.info-list {
+  @apply space-y-4;
+}
+
+.info-list-item {
+  @apply flex items-start space-x-3;
+}
+
+/* Custom styles for icons */
+.icon {
+  @apply w-5 h-5 text-gray-500;
+}
+
+/* Custom styles for badges */
+.badge {
+  @apply inline-block px-2 py-1 text-xs font-semibold rounded-full;
+}
+
+.badge-primary {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-secondary {
+  @apply bg-gray-100 text-gray-800;
+}
+
+/* Custom styles for alerts */
+.alert {
+  @apply p-4 rounded-lg mb-4;
+}
+
+.alert-info {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.alert-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.alert-error {
+  @apply bg-red-100 text-red-800;
+} 
