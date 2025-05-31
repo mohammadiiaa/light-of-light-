@@ -1,0 +1,33 @@
+{
+  "navigation": {
+    "home": "Home",
+    "education": "Education",
+    "healing": "Healing",
+    "liveStream": "Live Stream",
+    "interactive": "Interactive",
+    "forum": "Forum"
+  },
+  "common": {
+    "search": "Search",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "home": {
+    "welcome": "Welcome to Light of Light",
+    "subtitle": "Your interactive sanctuary for exploring divine wisdom, nature's signs, holistic healing, and fostering inner growth.",
+    "searchPlaceholder": "What wisdom calls to you today?"
+  },
+  "forum": {
+    "createTopic": "Create New Topic",
+    "recentTopics": "Recent Topics",
+    "popularTopics": "Popular Topics",
+    "categories": "Categories",
+    "postReply": "Post Reply",
+    "editPost": "Edit Post",
+    "deletePost": "Delete Post",
+    "reportPost": "Report Post"
+  }
+} 
