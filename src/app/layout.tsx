@@ -100,34 +100,12 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <a 
-          href="#main-content" 
-          id="skip-to-main-content-link"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-gray-900"
-          aria-label="Skip to main content"
-        >
-          Skip to main content
-        </a>
-        <div className="min-h-screen flex flex-col">
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <Navbar />
-          </div>
-          
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <MobileNav />
-          </div>
-
-          <main id="main-content" className="flex-grow">
-            <div className="container mx-auto px-4 py-4">
-              {children}
-            </div>
-          </main>
-          <Footer />
-          <CookieConsent />
-        </div>
+        <Navbar />
+        <main id="main-content" tabIndex={-1}>{children}</main>
+        <Footer />
+        <MobileNav />
+        <CookieConsent />
       </body>
     </html>
   )
-} 
+}

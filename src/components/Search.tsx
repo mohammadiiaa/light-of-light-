@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import { Search as SearchIcon, X } from 'lucide-react'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -33,46 +35,49 @@ export default function Search() {
         console.error('Search error:', error)
       } finally {
         setIsLoading(false)
+        setShowResults(true)
       }
     }
 
     fetchResults()
   }, [debouncedQuery])
 
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (query.trim()) setShowResults(true)
+  }
+
   return (
     <div className="relative w-full max-w-xl">
-      <form
-        onSubmit={e => e.preventDefault()}
-        className="relative"
-      >
+      <form onSubmit={handleSearch} className="flex items-center gap-2 border px-3 py-2 rounded-md shadow-sm bg-white">
+        <SearchIcon className="w-5 h-5 text-gray-500" />
         <input
           type="text"
-          aria-label="Search"
+          placeholder="Search..."
           value={query}
-          onChange={e => {
-            setQuery(e.target.value)
-            setShowResults(true)
-          }}
-          placeholder="Search for wisdom..."
-          className="w-full p-3 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setShowResults(true)}
+          className="flex-1 outline-none bg-transparent text-sm"
         />
-        <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
         {query && (
           <button
+            type="button"
             onClick={() => {
               setQuery('')
+              setShowResults(false)
               setResults([])
             }}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-800"
+            className="text-gray-500 hover:text-gray-800"
+            aria-label="Clear search"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         )}
       </form>
 
       {/* Search Results */}
       {showResults && (query || isLoading) && (
-        <div className="absolute w-full mt-2 bg-white rounded-lg shadow-lg border max-h-96 overflow-y-auto">
+        <div className="absolute w-full mt-2 bg-white rounded-lg shadow-lg border max-h-96 overflow-y-auto z-50">
           {isLoading ? (
             <div className="p-4 text-center text-gray-800">
               Searching...
@@ -93,7 +98,7 @@ export default function Search() {
                   <p className="text-sm text-gray-800 mt-1 line-clamp-2">
                     {result.content}
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="flex gap-2 mt-2 flex-wrap">
                     {result.tags.map(tag => (
                       <span
                         key={tag}

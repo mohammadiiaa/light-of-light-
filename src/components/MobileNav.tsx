@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useId } from 'react'
 import Link from 'next/link'
 import { Menu, X, Search, BookOpen, Sparkles, Leaf, HeartPulse } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import CookieConsent from './CookieConsent' // adjust path if needed
+import CookieConsent from './CookieConsent' // adjust the path if needed
 
 const mainLinks = [
   { title: "Verses of God", icon: <BookOpen className="w-5 h-5" />, path: "/verses" },
@@ -13,10 +13,11 @@ const mainLinks = [
   { title: "Holistic Healing", icon: <HeartPulse className="w-5 h-5" />, path: "/healing-facts" },
 ]
 
-export default function MobileNav() {
+function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
+  const uniqueId = useId()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -29,8 +30,8 @@ export default function MobileNav() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    // Implement search functionality
     console.log('Searching for:', searchQuery)
+    // Add your search logic here
   }
 
   return (
@@ -40,8 +41,9 @@ export default function MobileNav() {
           <Link href="/" className="text-xl font-bold text-amber-600">
             Light of Light
           </Link>
-          
+
           <button
+            id={`mobile-nav-${uniqueId}`}
             onClick={toggleMenu}
             className="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-expanded={isOpen}
@@ -56,7 +58,7 @@ export default function MobileNav() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Slide-in Mobile Menu */}
         <div
           id="mobile-menu"
           className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
@@ -92,7 +94,7 @@ export default function MobileNav() {
               </div>
             </form>
 
-            {/* Navigation Links */}
+            {/* Main Links */}
             <div className="space-y-4">
               {mainLinks.map((link) => (
                 <Link
@@ -100,7 +102,7 @@ export default function MobileNav() {
                   href={link.path}
                   className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
                     pathname === link.path
-                      ? 'bg-amber-50 text-amber-600'
+                      ? 'bg-amber-50 text-amber-700'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
                   onClick={toggleMenu}
@@ -111,25 +113,25 @@ export default function MobileNav() {
               ))}
             </div>
 
-            {/* Additional Links */}
+            {/* Footer Links */}
             <div className="mt-8 pt-8 border-t">
               <Link
                 href="/privacy-policy"
-                className="block py-2 text-gray-700 hover:text-amber-600"
+                className="block py-2 text-gray-700 hover:text-amber-700"
                 onClick={toggleMenu}
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="block py-2 text-gray-700 hover:text-amber-600"
+                className="block py-2 text-gray-700 hover:text-amber-700"
                 onClick={toggleMenu}
               >
                 Terms of Service
               </Link>
               <Link
                 href="/contact"
-                className="block py-2 text-gray-700 hover:text-amber-600"
+                className="block py-2 text-gray-700 hover:text-amber-700"
                 onClick={toggleMenu}
               >
                 Contact Us
@@ -143,3 +145,5 @@ export default function MobileNav() {
     </>
   )
 }
+
+export default MobileNav

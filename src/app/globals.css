@@ -4,163 +4,146 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  background: rgb(var(--background-rgb));
 }
 
-/* Custom styles for educational content */
+/* Component Styles */
 .education-card {
-  @apply bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:transform hover:scale-105;
+  @apply bg-white rounded-lg shadow-md p-6;
 }
 
 .education-title {
-  @apply text-xl font-semibold mb-4 text-gray-800;
+  @apply text-xl font-semibold text-gray-900 mb-2;
 }
 
 .education-description {
-  @apply text-gray-800 mb-4;
+  @apply text-gray-700 text-sm;
 }
 
-/* Custom styles for live streaming */
 .stream-container {
-  @apply relative w-full bg-black rounded-lg overflow-hidden;
-  aspect-ratio: 16/9;
+  @apply max-w-4xl mx-auto p-4;
 }
 
 .chat-container {
-  @apply h-96 border rounded-lg p-4 overflow-y-auto bg-white;
+  @apply bg-white rounded-lg shadow-md p-4;
 }
 
-/* Custom styles for admin dashboard */
 .admin-card {
-  @apply bg-white p-6 rounded-lg shadow-md mb-6;
+  @apply bg-white rounded-lg shadow-md p-6;
 }
 
 .admin-title {
-  @apply text-2xl font-semibold mb-4 text-gray-800;
+  @apply text-xl font-semibold text-gray-900 mb-4;
 }
 
-/* Custom styles for natural signs */
 .natural-sign-card {
-  @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+  @apply bg-white rounded-lg shadow-md p-6;
 }
 
 .significance-box {
-  @apply bg-blue-50 p-4 rounded mb-4 text-gray-900;
+  @apply bg-amber-50 rounded-lg p-4 mb-4;
 }
 
 .scientific-box {
-  @apply bg-green-50 p-4 rounded text-gray-900;
+  @apply bg-blue-50 rounded-lg p-4;
 }
 
-/* Custom styles for navigation */
+/* Navigation */
 .nav-link {
-  @apply text-gray-800 hover:text-gray-900 transition-colors duration-200;
+  @apply text-gray-700 hover:text-amber-700 transition-colors;
 }
 
-/* Custom styles for buttons */
+/* Buttons */
 .primary-button {
-  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200;
+  @apply bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors;
 }
 
 .secondary-button {
-  @apply bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-200;
+  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors;
 }
 
-/* Custom styles for forms */
+/* Forms */
 .form-input {
-  @apply w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900;
+  @apply w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500;
 }
 
 .form-label {
-  @apply block text-gray-700 text-sm font-bold mb-2;
+  @apply block text-sm font-medium text-gray-700 mb-1;
 }
 
-/* Custom styles for typography */
+/* Typography */
 .heading-1 {
-  @apply text-3xl font-bold mb-8;
+  @apply text-4xl font-bold text-gray-900 mb-6;
 }
 
 .heading-2 {
-  @apply text-2xl font-semibold mb-6;
+  @apply text-3xl font-semibold text-gray-900 mb-4;
 }
 
 .heading-3 {
-  @apply text-xl font-semibold mb-4;
+  @apply text-2xl font-semibold text-gray-900 mb-3;
 }
 
-/* Custom styles for grid layouts */
+/* Layout */
 .grid-container {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 }
 
-/* Custom styles for responsive containers */
 .content-container {
-  @apply container mx-auto px-4 py-8;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
 }
 
-/* Custom styles for cards */
 .info-card {
-  @apply bg-white p-6 rounded-lg shadow-md;
+  @apply bg-white rounded-lg shadow-md p-6;
 }
 
-/* Custom styles for sections */
 .section {
-  @apply mb-12;
+  @apply py-12;
 }
 
-/* Custom styles for text content */
 .text-content {
-  @apply text-gray-600 leading-relaxed;
+  @apply text-gray-700 leading-relaxed;
 }
 
-/* Custom styles for highlights */
 .highlight {
-  @apply bg-yellow-50 p-4 rounded border-l-4 border-yellow-500;
+  @apply bg-amber-100 px-2 py-1 rounded;
 }
 
-/* Custom styles for quotes */
 .quote {
-  @apply italic text-gray-700 border-l-4 border-gray-300 pl-4 my-4;
+  @apply border-l-4 border-amber-500 pl-4 italic text-gray-700;
 }
 
-/* Custom styles for lists */
 .info-list {
-  @apply space-y-4;
+  @apply space-y-2;
 }
 
 .info-list-item {
-  @apply flex items-start space-x-3;
+  @apply flex items-start space-x-2;
 }
 
-/* Custom styles for icons */
 .icon {
-  @apply w-5 h-5 text-gray-500;
+  @apply w-6 h-6 text-amber-600;
 }
 
-/* Custom styles for badges */
+/* Badges */
 .badge {
-  @apply inline-block px-2 py-1 text-xs font-semibold rounded-full;
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
 }
 
 .badge-primary {
-  @apply bg-blue-100 text-blue-800;
+  @apply bg-amber-100 text-amber-800;
 }
 
 .badge-secondary {
   @apply bg-gray-100 text-gray-800;
 }
 
-/* Custom styles for alerts */
+/* Alerts */
 .alert {
   @apply p-4 rounded-lg mb-4;
 }
@@ -179,4 +162,13 @@ body {
 
 .alert-error {
   @apply bg-red-100 text-red-800;
-} 
+}
+
+/* Colors */
+.primary-blue {
+  @apply text-blue-600;
+}
+
+.link-color {
+  @apply text-amber-600 hover:text-amber-700;
+}

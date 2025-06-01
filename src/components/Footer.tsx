@@ -11,7 +11,7 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">About Light of Light</h3>
-            <p className="text-gray-800 text-sm">
+            <p className="text-gray-700 text-sm">
               A sanctuary for exploring divine wisdom, nature's signs, and holistic healing.
               Join us on this journey of spiritual growth and well-being.
             </p>
@@ -22,22 +22,22 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/verses" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/verses" className="text-gray-700 hover:text-amber-700 text-sm">
                   Verses of Wisdom
                 </Link>
               </li>
               <li>
-                <Link href="/names-of-god" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/names-of-god" className="text-gray-700 hover:text-amber-700 text-sm">
                   Names of God
                 </Link>
               </li>
               <li>
-                <Link href="/nature-universe" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/nature-universe" className="text-gray-700 hover:text-amber-700 text-sm">
                   Nature's Signs
                 </Link>
               </li>
               <li>
-                <Link href="/healing-facts" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/healing-facts" className="text-gray-700 hover:text-amber-700 text-sm">
                   Holistic Healing
                 </Link>
               </li>
@@ -49,12 +49,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/privacy-policy" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/privacy-policy" className="text-gray-700 hover:text-amber-700 text-sm">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms-and-conditions" className="text-gray-800 hover:text-amber-600 text-sm">
+                <Link href="/terms-and-conditions" className="text-gray-700 hover:text-amber-700 text-sm">
                   Terms & Conditions
                 </Link>
               </li>
@@ -65,20 +65,20 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-800 text-sm">
+            <p className="text-gray-700 text-sm">
               © {new Date().getFullYear()} Light of Light. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
               <Link
                 href="/support"
-                className="text-gray-800 hover:text-amber-600 text-sm flex items-center"
+                className="text-gray-700 hover:text-amber-700 text-sm flex items-center"
                 aria-label="Support us"
               >
                 Support Us <Heart className="w-4 h-4 ml-1" aria-hidden="true" />
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-800 hover:text-amber-600 text-sm flex items-center"
+                className="text-gray-700 hover:text-amber-700 text-sm flex items-center"
                 aria-label="Contact us"
               >
                 Contact <ExternalLink className="w-4 h-4 ml-1" aria-hidden="true" />
