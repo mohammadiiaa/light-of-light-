@@ -1,105 +1,145 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Home, 
-  BookOpen, 
-  Leaf, 
-  Heart, 
-  MessageSquare, 
-  Menu,
-  X,
-  Video,
-  User,
-  TestTube
-} from 'lucide-react'
+import { Menu, X, Search, BookOpen, Sparkles, Leaf, HeartPulse } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import CookieConsent from './CookieConsent' // adjust path if needed
 
-const mobileNavItems = [
-  { name: 'Home', href: '/', icon: Home },
-  { name: 'Verses', href: '/verses', icon: BookOpen },
-  { name: 'Nature', href: '/nature', icon: Leaf },
-  { name: 'Healing', href: '/healing', icon: Heart },
-  { name: 'Forum', href: '/forum', icon: MessageSquare },
-  { name: 'Live', href: '/live-stream', icon: Video },
-  { name: 'Tests', href: '/tests', icon: TestTube },
-  { name: 'Admin', href: '/admin', icon: User },
+const mainLinks = [
+  { title: "Verses of God", icon: <BookOpen className="w-5 h-5" />, path: "/verses" },
+  { title: "99 Names of God", icon: <Sparkles className="w-5 h-5" />, path: "/names-of-god" },
+  { title: "Nature's Signs", icon: <Leaf className="w-5 h-5" />, path: "/nature-universe" },
+  { title: "Holistic Healing", icon: <HeartPulse className="w-5 h-5" />, path: "/healing-facts" },
 ]
 
 export default function MobileNav() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const pathname = usePathname()
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Implement search functionality
+    console.log('Searching for:', searchQuery)
+  }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 md:hidden">
-      {/* Bottom Navigation Bar */}
-      <div className="flex justify-around items-center h-16">
-        {mobileNavItems.slice(0, 4).map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="flex flex-col items-center justify-center w-full h-full text-gray-800 hover:text-blue-600 transition-colors"
-            aria-label={item.name}
-          >
-            <item.icon className="w-6 h-6" aria-hidden="true" />
-            <span className="text-xs mt-1">{item.name}</span>
+    <>
+      <nav className="md:hidden bg-white border-b" role="navigation" aria-label="Mobile navigation">
+        <div className="px-4 py-3 flex items-center justify-between">
+          <Link href="/" className="text-xl font-bold text-amber-600">
+            Light of Light
           </Link>
-        ))}
-        <button
-          onClick={() => setIsMenuOpen(true)}
-          className="flex flex-col items-center justify-center w-full h-full text-gray-800 hover:text-blue-600 transition-colors"
-          aria-label="Open more menu"
-          aria-expanded={isMenuOpen}
-          aria-controls="more-menu"
-        >
-          <Menu className="w-6 h-6" aria-hidden="true" />
-          <span className="text-xs mt-1">More</span>
-        </button>
-      </div>
-
-      {/* Full Screen Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: '100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '100%' }}
-            className="fixed inset-0 bg-white z-50"
-            id="more-menu"
-            role="menu"
-            aria-label="More navigation options"
+          
+          <button
+            onClick={toggleMenu}
+            className="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            <div className="p-4">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-xl font-semibold">Menu</h2>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full"
-                  aria-label="Close menu"
-                >
-                  <X className="w-6 h-6" aria-hidden="true" />
-                </button>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {mobileNavItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors"
-                    role="menuitem"
-                    aria-label={item.name}
-                  >
-                    <item.icon className="w-6 h-6 text-blue-600" aria-hidden="true" />
-                    <span>{item.name}</span>
-                  </Link>
-                ))}
-              </div>
+            {isOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          id="mobile-menu"
+          className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+            isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-6">
+              <Link href="/" className="text-xl font-bold text-amber-600">
+                Light of Light
+              </Link>
+              <button
+                onClick={toggleMenu}
+                className="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+
+            {/* Search Bar */}
+            <form onSubmit={handleSearch} className="mb-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                  aria-label="Search"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              </div>
+            </form>
+
+            {/* Navigation Links */}
+            <div className="space-y-4">
+              {mainLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                    pathname === link.path
+                      ? 'bg-amber-50 text-amber-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  {link.icon}
+                  <span>{link.title}</span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Additional Links */}
+            <div className="mt-8 pt-8 border-t">
+              <Link
+                href="/privacy-policy"
+                className="block py-2 text-gray-700 hover:text-amber-600"
+                onClick={toggleMenu}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="block py-2 text-gray-700 hover:text-amber-600"
+                onClick={toggleMenu}
+              >
+                Terms of Service
+              </Link>
+              <Link
+                href="/contact"
+                className="block py-2 text-gray-700 hover:text-amber-600"
+                onClick={toggleMenu}
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <CookieConsent />
+    </>
   )
-} 
+}

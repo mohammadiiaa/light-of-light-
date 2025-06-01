@@ -28,9 +28,13 @@ export const metadata: Metadata = {
   viewport: {
     width: 'device-width',
     initialScale: 1,
+    maximumScale: 5,
   },
   verification: {
     google: 'your-google-site-verification',
+  },
+  alternates: {
+    canonical: 'https://light-of-light.vercel.app',
   },
 }
 
@@ -42,6 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Your interactive sanctuary for exploring divine wisdom, nature's signs, holistic healing, and fostering inner growth." />
+        
         {/* Google AdSense Script */}
         <Script
           async
@@ -49,6 +58,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        
         {/* Cookie Consent Script */}
         <Script
           id="cookie-consent-config"
@@ -73,6 +83,12 @@ export default function RootLayout({
                   "dismiss": "Got it!",
                   "link": "Learn more",
                   "href": "/privacy-policy"
+                },
+                "cookie": {
+                  "name": "light_of_light_cookie_consent",
+                  "domain": "light-of-light.vercel.app",
+                  "path": "/",
+                  "expiryDays": 365
                 }
               };
             `
